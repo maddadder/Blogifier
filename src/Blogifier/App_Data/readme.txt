@@ -1,0 +1,1 @@
+This is where a sqlite database should be stored when running in demo mode in azure. Do not use in production.
