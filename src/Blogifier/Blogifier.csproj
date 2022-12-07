@@ -28,5 +28,7 @@
 	  <Folder Include="wwwroot\data\" />
 	  <Folder Include="App_Data" />
 	</ItemGroup>
-
+	<Content Include="App_Data\**">
+        <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
 </Project>
