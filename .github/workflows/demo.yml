@@ -25,7 +25,7 @@ jobs:
         dotnet-version: '7.0.x'
 
     - name: Publish Blogifier
-      run: dotnet publish -c Release -o release --nologo
+      run: dotnet publish ./src/Blogifier/Blogifier.csproj -c Release -o release --nologo
 
     - name: Add .nojekyll file
       run: touch release/.nojekyll
