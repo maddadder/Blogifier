@@ -58,11 +58,10 @@
     margin: -2rem -1.5rem 2rem;
 
     &-nav {
-      display: none;
+      display: block;
       width: 100%;
-      position: absolute;
+      position: relative;
       z-index: 100;
-      top: 3.0625rem;
       left: 0;
       padding: 1rem 1.5rem;
       @include bf-shadow(0);
