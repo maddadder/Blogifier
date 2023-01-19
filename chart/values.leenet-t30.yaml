@@ -1,0 +1,13 @@
+environment: leenet-t30
+
+nameOverride: "blogifier-leenet"
+fullnameOverride: "blogifier-leenet"
+
+dnsName: leenet.link
+
+image:
+  repository: 192.168.1.151:32000/blogifier
+
+gatewayNamespace: default
+gateway: default/leenet-gateway
+appNamespace: default

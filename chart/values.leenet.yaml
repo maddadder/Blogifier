@@ -1,0 +1,6 @@
+environment: leenet
+
+nameOverride: "blogifier-leenet"
+fullnameOverride: "blogifier-leenet"
+
+dnsName: leenet.link
