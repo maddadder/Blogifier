@@ -318,9 +318,9 @@ namespace Blogifier.Core.Providers
 		}
 
 		bool InvalidFileName(string fileName)
-      {
-			List<string> fileExtensions = new List<string>() { "png", "gif", "jpeg", "jpg", "zip", "7z", "pdf", "doc", "docx", "xls", "xlsx", "mp3", "mp4", "avi" };
-         string configFileExtensions = _configuration.GetSection("Blogifier").GetValue<string>("FileExtensions");
+      	{
+			List<string> fileExtensions = new List<string>() { "svg", "png", "gif", "jpeg", "jpg", "zip", "7z", "pdf", "doc", "docx", "xls", "xlsx", "mp3", "mp4", "avi" };
+         	string configFileExtensions = _configuration.GetSection("Blogifier").GetValue<string>("FileExtensions");
 			
 			if(!string.IsNullOrEmpty(configFileExtensions))
 			{

@@ -99,7 +99,7 @@ let fileManager = function (dataService) {
       if (url.toLowerCase().match(/.(wav)$/i)) { exta = 'wav'; }
       output = `<audio controls>\r\n\t\t<source src="${url}" type="audio/${exta}">\r\n\t\tYour browser does not support the audio tag.\r\n</audio>`;
     }
-    else if (url.toLowerCase().match(/.(jpg|jpeg|png|gif)$/i)) {
+    else if (url.toLowerCase().match(/.(svg|jpg|jpeg|png|gif)$/i)) {
       output = '\r\n![' + output;
     }
     else {
