@@ -4,3 +4,6 @@ nameOverride: "blogifier-ollie"
 fullnameOverride: "blogifier-ollie"
 
 dnsName: ollie.leenet.link
+
+nodeSelector:
+  kubernetes.io/hostname: worker-1

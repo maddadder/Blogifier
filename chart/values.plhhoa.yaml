@@ -4,3 +4,5 @@ nameOverride: "blogifier-plhhoa"
 fullnameOverride: "blogifier-plhhoa"
 
 dnsName: plhhoa.link
+nodeSelector:
+  kubernetes.io/hostname: worker-1

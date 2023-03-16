@@ -4,3 +4,5 @@ nameOverride: "blogifier-zambonigirl"
 fullnameOverride: "blogifier-zambonigirl"
 
 dnsName: zambonigirl.com
+nodeSelector:
+  kubernetes.io/hostname: worker-1
