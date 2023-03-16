@@ -1,0 +1,65 @@
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: my-nfs-volume
+spec:
+  persistentVolumeReclaimPolicy: Retain
+  capacity:
+    storage: 10Gi
+  accessModes:
+    - ReadWriteMany
+  nfs:
+    path: /myshare
+    server: 192.168.1.65
+  mountOptions:
+    - vers=4
+    - minorversion=1
+    - noac
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: my-nfs-claim
+spec:
+  volumeName: my-nfs-volume
+  storageClassName: ""
+  accessModes:
+    - ReadWriteMany
+  resources:
+    requests:
+      storage: 10Gi
+---
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  name: backup-postgres-db
+spec:
+  schedule: "0 12 * * *"
+  jobTemplate:
+    spec:
+      template:
+        metadata:
+          annotations:
+            sidecar.istio.io/inject: "false"
+        spec:
+          restartPolicy: Never
+          imagePullSecrets: 
+            - name: leenet-registry
+          containers:
+          - name: pgsql-backup
+            image: neon-registry.b4c5-2917-0fd3-88a5.neoncluster.io/leenet/postgres-backup
+            env:
+            - name: "PGHOST"
+              value: "neon-system-db.neon-system.svc.cluster.local"
+            - name: "PGPASSWORD"
+              value: "YOU_POSTGRESS_PASSWORD_GOES_HERE"
+            volumeMounts:
+            - name: nfs
+              mountPath: /mnt/nfs
+          volumes:
+            - name: nfs
+              persistentVolumeClaim:
+                claimName: my-nfs-claim
+          securityContext:
+            fsGroup: 1000
+            runAsUser: 1000
