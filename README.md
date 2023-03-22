@@ -58,6 +58,9 @@ while true; do kubectl port-forward --namespace neon-system pod/neon-system-db-0
 
 <br><br>
 ## Deploy to kubernetes
+
+1. I had to go to istio-ingressgateway demonset and double the memory limit twice to prevent OOM errors (To 480Mi)
+
 ```
 ./deploy-t30.sh
 OR

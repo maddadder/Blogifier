@@ -1,7 +1,10 @@
+using System;
 using Blogifier.Core.Extensions;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http.Features;
+using Microsoft.AspNetCore.Server.Kestrel.Core;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -44,10 +47,17 @@ namespace Blogifier
 
             services.AddBlogProviders();
 
-            
+
             services.AddControllersWithViews();
             services.AddRazorPages();
-
+            services.Configure<KestrelServerOptions>(opt =>
+            {
+                opt.Limits.MaxRequestBodySize = null; 
+            });
+            services.Configure<FormOptions>(options =>
+            {
+                options.MultipartBodyLengthLimit = 6291456; //6 Mb keep low to prevent OOM errors
+            });
             Log.Warning("Done configure services");
         }
 

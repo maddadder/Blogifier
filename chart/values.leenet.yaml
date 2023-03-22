@@ -6,3 +6,9 @@ fullnameOverride: "blogifier-leenet"
 dnsName: leenet.link
 nodeSelector:
   kubernetes.io/hostname: worker-1
+
+resources:
+  requests:
+    memory: 512Mi
+  limits:
+    memory: 1Gi

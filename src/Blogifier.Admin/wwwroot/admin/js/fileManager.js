@@ -19,8 +19,14 @@ let fileManager = function (dataService) {
 
   function uploadSubmit() {
     let data = new FormData(frmUpload);
-    let url = postId > 0 ? `api/storage/upload/${uplType}?postId=${postId}` : `api/storage/upload/${uplType}`;
-    dataService.upload(url, data, callBack, fail);
+    if(uplType !== "PostImage"){
+      let url = postId > 0 ? `api/storage/upload/${uplType}?postId=${postId}` : `api/storage/upload/${uplType}`;
+      dataService.upload(url, data, callBack, fail);
+    }
+    else
+    {
+      dataService.upload(`api/storage/uploadmultipart`, data, callBack, fail);
+    }
   }
 
   function clipBoardUpload(ClipboardEvent)
@@ -67,24 +73,24 @@ let fileManager = function (dataService) {
 
   function appCoverCallback(data) {
     let defaultCover = document.getElementById('defaultCover');
-    defaultCover.value = data;
+    defaultCover.value = data.data ? data.data : data;
   }
 
   function postCoverCallback(data) {
     let postCover = document.getElementById("postCover");
-    postCover.src = data;
+    postCover.src = data.data ? data.data : data;
   }
 
   function userAvatarCallback(data) {
     let profilePicture = document.querySelectorAll('.profilePicture');
     for (i = 0; i < profilePicture.length; i++) {
-      profilePicture[i].src = data;
+      profilePicture[i].src = data.data ? data.data : data;
     }
   }
 
   function insertImgCallback(data) {
     let cm = _editor.codemirror;
-    let url = data;
+    let url = data.data ? data.data : data;
     let output = url + '](' + url + ')';
 
     if (url.toLowerCase().match(/.(mp4|ogv|webm)$/i)) {
@@ -110,7 +116,7 @@ let fileManager = function (dataService) {
   }
 
   function fail(data) {
-    console.log(data.url);
+    console.log(data);
   }
 
   return {
