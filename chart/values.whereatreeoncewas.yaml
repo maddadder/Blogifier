@@ -1,0 +1,9 @@
+environment: whereatreeoncewas
+
+nameOverride: "blogifier-whereatreeoncewas"
+fullnameOverride: "blogifier-whereatreeoncewas"
+
+dnsName: whereatreeoncewas.com
+
+nodeSelector:
+  kubernetes.io/hostname: worker-2

@@ -1,5 +1,5 @@
 docker-compose build
-docker push 192.168.1.151:32000/blogifier:1.12.42
+docker push 192.168.1.151:32000/blogifier:1.12.43
 
 #plhhoa-t30
 helm upgrade blogifier-plhhoa -f ./chart/values.yaml -f ./chart/values.plhhoa-t30.yaml ./chart --namespace default
@@ -18,3 +18,6 @@ helm upgrade blogifier-ollie -f ./chart/values.yaml -f ./chart/values.ollie-t30.
 
 #leenet-t30
 helm upgrade blogifier-leenet -f ./chart/values.yaml -f ./chart/values.leenet-t30.yaml ./chart --namespace default
+
+#ollie-t30
+helm upgrade blogifier-whereatreeoncewas -f ./chart/values.yaml -f ./chart/values.whereatreeoncewas-t30.yaml ./chart --namespace default
