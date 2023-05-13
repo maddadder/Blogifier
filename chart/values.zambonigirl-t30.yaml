@@ -9,5 +9,6 @@ image:
   repository: 192.168.1.151:32000/blogifier
 
 gatewayNamespace: default
-gateway: default/leenet-gateway
+gateway: neon-ingress/leenet-gateway
 appNamespace: default
+storageClassName: microk8s-hostpath

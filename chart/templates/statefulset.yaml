@@ -10,7 +10,7 @@ spec:
         name: wwwroot-data
       spec:
         accessModes: [ "ReadWriteOnce" ]
-        storageClassName: default
+        storageClassName: "{{ .Values.storageClassName }}"
         resources:
           requests:
             storage: 2Gi

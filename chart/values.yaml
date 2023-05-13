@@ -71,3 +71,4 @@ dnsName: example.com
 gatewayNamespace: neon-ingress
 gateway: neon-ingress/leenet-gateway
 appNamespace: leenet
+storageClassName: default
