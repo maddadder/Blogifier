@@ -53,6 +53,8 @@ export CLR_OPENSSL_VERSION_OVERRIDE=1.1
 code
 --------------------------------------------
 while true; do kubectl port-forward --namespace neon-system pod/neon-system-db-0 5432:5432; done
+OR on T30:
+while true; do kubectl port-forward --namespace default pod/acid-minimal-cluster-0 5432:5432; done
 #to backup restore db use pg-admin4. To restore make sure to select the role name
 ```
 
