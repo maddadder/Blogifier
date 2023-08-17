@@ -13,11 +13,8 @@
 ```
 # backup the files from each website onto local PC
 kubectl cp default/blogifier-plhhoa-0:/opt/blogifier/outputs/wwwroot/data ~/Downloads/backups/blogifier/plhhoa
-kubectl cp default/blogifier-zambonigirl-0:/opt/blogifier/outputs/wwwroot/data ~/Downloads/backups/blogifier/zambonigirl
-kubectl cp default/blogifier-pawsnclaws-0:/opt/blogifier/outputs/wwwroot/data ~/Downloads/backups/blogifier/pawsnclaws
-kubectl cp default/blogifier-paintedravendesign-0:/opt/blogifier/outputs/wwwroot/data ~/Downloads/backups/blogifier/paintedravendesign
-kubectl cp default/blogifier-ollie-0:/opt/blogifier/outputs/wwwroot/data ~/Downloads/backups/blogifier/ollie
-kubectl cp default/blogifier-leenet-0:/opt/blogifier/outputs/wwwroot/data ~/Downloads/backups/blogifier/leenet
+...
+See backup-t30.sh
 # Backup from from NTF Server onto local PC
 sudo mount 192.168.1.65:/myshare /nfs/home
 # Check that the volumne mounted ^
