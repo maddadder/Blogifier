@@ -71,4 +71,4 @@ OR
 
 <br><br>
 ## Configure Continious db backups
-See the postgres Readme.md
+See the postgres Readme.md, or readme-t30.md

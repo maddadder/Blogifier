@@ -2,7 +2,8 @@
 version: "2.2"
 services:
   backup:
-    image: neon-registry.b4c5-2917-0fd3-88a5.neoncluster.io/leenet/postgres-backup
+    #image: neon-registry.b4c5-2917-0fd3-88a5.neoncluster.io/leenet/postgres-backup
+    image: 192.168.1.151:32000/postgres-backup
     build:
       context: ./
       dockerfile: ./src/Dockerfile
