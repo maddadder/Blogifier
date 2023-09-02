@@ -77,6 +77,9 @@ namespace Blogifier.Controllers
 			{
 				return false;
 			}
+			if(currentUser.Id == id){
+				return false;
+			}
 			return await _authorProvider.Remove(id);
 		}
 
@@ -100,7 +103,11 @@ namespace Blogifier.Controllers
 			var currentUser = await _authorProvider.FindByEmail(User.FindFirstValue(ClaimTypes.Name));
 			if(!currentUser.IsAdmin)
 			{
-				return false;
+				return BadRequest();
+			}
+			if(currentUser.Id == author.Id && currentUser.Email != author.Email){
+				//User is trying to update their own email.
+				return BadRequest("You can only update the email address of other users' accounts. You should register or use a admin different account in order to perform this operation.");
 			}
 			var success = await _authorProvider.Update(author);
 			return success ? Ok() : BadRequest();

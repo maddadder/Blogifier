@@ -166,25 +166,34 @@ namespace Blogifier.Core.Providers
 
 		public async Task<bool> Update(Author author)
 		{
+			// Check if the new email address is already associated with another author
+			var emailExists = await _db.Authors
+				.AnyAsync(a => a.Email == author.Email && a.Id != author.Id);
+
+			if (emailExists)
+			{
+				return false;
+			}
+
 			var existing = await _db.Authors
-				.Where(a => a.Email == author.Email)
+				.Where(a => a.Id == author.Id) 
 				.FirstOrDefaultAsync();
 
 			if (existing == null)
 				return false;
 
-            if(existing.IsAdmin && !author.IsAdmin)
-            {
-                // do not remove last admin account
-                if (_db.Authors.Where(a => a.IsAdmin).Count() == 1)
-                    return false;
-            }
+			if (existing.IsAdmin && !author.IsAdmin)
+			{
+				// Do not remove the last admin account
+				if (await _db.Authors.CountAsync(a => a.IsAdmin) == 1)
+					return false;
+			}
 
 			existing.Email = author.Email;
 			existing.DisplayName = author.DisplayName;
 			existing.Bio = author.Bio;
 			existing.Avatar = author.Avatar;
-            existing.IsAdmin = author.IsAdmin;
+			existing.IsAdmin = author.IsAdmin;
 
 			return await _db.SaveChangesAsync() > 0;
 		}

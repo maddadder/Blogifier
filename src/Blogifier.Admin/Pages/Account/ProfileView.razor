@@ -36,7 +36,7 @@
          </div>
          <div class="form-item">
             <label class="form-label">@_localizer["email"]</label>
-            <input class="form-control" type="email" @bind="Author.Email" />
+            <input class="form-control" type="email" @bind="Author.Email" readonly="true" />
             <ValidationMessage For="@(() => Author.Email)"></ValidationMessage>
          </div>
          <div class="form-item">

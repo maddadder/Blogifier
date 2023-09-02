@@ -1,5 +1,5 @@
 docker-compose build
-docker push neon-registry.b4c5-2917-0fd3-88a5.neoncluster.io/leenet/blogifier:1.12.45
+docker push neon-registry.b4c5-2917-0fd3-88a5.neoncluster.io/leenet/blogifier:1.12.50
 
 #plhhoa
 helm upgrade blogifier-plhhoa -f ./chart/values.yaml -f ./chart/values.plhhoa.yaml ./chart --namespace leenet
