@@ -12,7 +12,7 @@
             "type": "blazorwasm",
             "request": "launch",
             "hosted": true,
-            "program": "${workspaceFolder}/src/Blogifier/bin/Debug/net7.0/Blogifier.dll",
+            "program": "${workspaceFolder}/src/Blogifier/bin/Debug/net8.0/Blogifier.dll",
             "cwd": "${workspaceFolder}/src/Blogifier",
             "browser": "chrome"
           }
